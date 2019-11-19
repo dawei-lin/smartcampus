@@ -1,0 +1,26 @@
+﻿@charset "UTF-8";
+
+.bback{
+	color:#000000;
+	position:absolute;
+	width:145px;
+	height:20px;
+	line-height:20px;
+	font-size:14px;
+	top:5px;
+	left:8px;
+	z-index:-1;
+}
+.ttext{
+	position:absolute;
+	left:5px;
+	top:5px;
+	width:145px;
+	height:20px;
+	padding:0;
+	font-family:sans-serif;
+}
+.gground{
+	opacity:0.5;
+	filter:Alpha(Opacity=50);
+}

@@ -1,0 +1,53 @@
+﻿@charset "UTF-8";
+
+ 
+.my-checkbox+span {
+	content: "\a0";
+    background-color: white;
+    border:2px solid #0093d9;
+    position: relative!important;
+    cursor: pointer;
+    border-radius: 5px 5px 5px 5px;
+}
+.my-radio+span {
+	content: "\a0";
+    border-radius: 50%;
+    background-color:white;
+    position: relative!important;
+    cursor: pointer;
+    border:2px solid #0093d9;
+}
+ 
+.my-checkbox:checked+span:after {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    text-align: center;
+    content: '\2714';
+    color: #fff;
+    background-color: #0093d9;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.my-radio:checked+span::after {
+	width: 55%;
+    height: 55%;
+    border-radius: 50%;
+    content: '';
+    background: #0093d9;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+/*隐藏原本的复选框*/
+.my-checkbox,.my-radio {
+    display: none;
+}

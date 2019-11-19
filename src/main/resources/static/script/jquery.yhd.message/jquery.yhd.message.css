@@ -1,0 +1,132 @@
+﻿@charset "UTF-8";
+#msgbox-win{
+	z-index: 100000;
+	/* background-color:#e7f0ff;
+	border:1px solid #84b3ff;
+	border-radius:5px; */
+	border-radius:15px;
+	background-color:#ffffff;
+	overflow:hidden;
+	position:absolute;
+}
+
+#msgbox-title{
+	margin:10px 10px 10px 10px;
+	border-bottom:1px solid #EEEEF9;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+#msgbox-title-close{
+	opacity:0.6;
+	vertical-align:top;
+	background-image:url(images/panel_tools.png);
+	background-position:-16px 0;
+	float:right;
+	margin-right:5px;
+}
+#msgbox-title-close:hover{
+	opacity:1;
+	cursor:pointer;
+}
+#msgbox-title-name{
+	font-size:14px;
+	font-weight:bold;
+	color:#0E2D5F;
+	margin:10px 0 0 5px;
+	vertical-align:top;
+	display:block;
+}
+#msgbox-body{
+	padding:5px;
+	/* margin:5px 5px 5px 5px; */
+	text-align: center
+	/* background-color:#ffffff; */
+	/* border-radius:3px; */
+	/* border:1px solid #84b3ff; */
+}
+.c-msgbox-win,.c-msgbox-body{
+	/* border-width:1px;
+	border-style:solid;
+	border-color:#bdc4d1; */
+}
+.msg-btn{
+	text-decoration:none;
+	text-align:center;
+	display:inline-block;
+	overflow:hidden;
+	line-height:30px;
+	vertical-align:middle;
+	width:90px;
+	border-radius:5px;
+	margin-left:3px;
+	font-size:12px;
+	/*
+	border:1px solid #84b3ff;
+	color:#525252; 
+	background-color:#ffffff; 
+	*/
+	color:#F5F5DC;
+	background-color:#80B764;
+}
+.msg-btn1{
+	text-decoration:none;
+	text-align:center;
+	display:inline-block;
+	overflow:hidden;
+	line-height:30px;
+	vertical-align:middle;
+	width:90px;
+	border-radius:5px;
+	margin-left:3px;
+	font-size:12px;
+	background-color:#EEEEF9;
+}
+.msg-btn:hover{
+	/* background-color:#e7f0ff; */
+}
+#msgbox-message{
+	font-size:12px;
+}
+.messager-icon{
+	width:32px;
+	height:32px;
+}
+.messager-icon,#msgbox-message{
+	display:inline-block;
+	vertical-align:top;
+	margin-right:10px;
+	margin-bottom:10px;
+}
+.messager-{
+	width:0;
+	height:0;
+	margin-right:0;
+	margin-bottom:0;
+}
+.messager-warning{
+	background-image:url(images/messager_icons.png);
+	background-position:-96px 0px;
+}
+.messager-info{
+	background-image:url(images/messager_icons.png);
+	background-position:0px 0px;
+}
+.messager-error{
+	background-image:url(images/messager_icons.png);
+	background-position:-64px 0px;
+}
+.messager-question{
+	background-image:url(images/messager_icons.png);
+	background-position:-32px 0px;
+}
+.msg-modal{
+	position:absolute;
+	top:0%;
+	left:0%;
+	display:none;
+	background:rgba(0,0,0,0.3);
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:99999;
+}

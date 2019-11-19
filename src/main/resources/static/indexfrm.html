@@ -1,0 +1,109 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.accordion/jquery.yhd.accordion.css?v=60" />
+
+	<style type="text/css">
+		.usermenu{
+			border: 1px solid #e6e6ef;
+			background-color: #ffffff;
+			float: right;
+			position: absolute;
+			right: 20px;
+			top: 50px;
+			z-index: 999;
+			width: 130px;
+			display:none;
+		}
+		.useritem{
+			padding: 5px;
+			border-bottom: 1px solid #ebebef;
+		}
+		.useritemend{
+			padding: 5px;
+			border-bottom: 0px solid #ebebef;
+		}
+		.useritemimg{
+			width: 12px !important;
+			height: 12px !important;
+			margin-top: 3px;
+			margin-right: 6px;
+		}
+	</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js?v=2"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.accordion/jquery.yhd.accordion.js?v=60"></script>
+
+	<script type="text/javascript">
+        var flagType;
+
+        $(document).ready(function(){
+            $("[id=menuTree]").accordion({url:"/smartcampus/userInfo/permission",valueField:"id",textField:"menuname",parentField:"pid",urlField:"url",target:"contentFrm"});
+            $("#loginUser").html($.session.get("realname"));
+            //$("#loginUser").html("系统管理员");
+            winSize();
+            $(window).resize(function(){
+                winSize();
+            });
+            $("#userctrl").on("mouseenter",function(){
+                $(".usermenu").show();
+            });
+            $("#userctrl").on("mouseleave",function(){
+                $(".usermenu").hide();
+            });
+            function winSize(){
+                var mainwidth = $(window).width();
+                var mainheight = $(window).height();
+                $("#contdiv,#contentFrm").width(mainwidth-278);
+                $("#contdiv,#contentFrm").height(mainheight-100);
+            }
+        });
+
+	</script>
+</head>
+<body id="indexfrm" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="">
+	<span style="color: #FFFFFF; font-size: 14px; padding-bottom: 25px; padding-top: 25px; width: 250px; height: 30px; text-align: center; background-color: #80B764;" >智慧基础平台</span>
+	<span style="padding-bottom: 25px;padding-left:50px; padding-top: 25px; height: 16px;" >欢迎登陆智慧基础平台</span>
+	<div id="userctrl" style="float:right;">
+		<img src="images/14.png" style="width: 16px; margin-right: 3px; height: 16px; margin-top: 25px;" id="loginLogo" name="loginLogo"/>
+		<span style="padding-right:10px; padding-bottom: 25px; padding-top: 25px;" id="loginUser" name="loginUser"></span>
+		<div class="usermenu">
+			<div class="useritem">
+				<img class="useritemimg" src="images/10.png" /><a href="yonghuxinxi.html" target="contentFrm">个人中心</a>
+			</div>
+			<div class="useritem useritemend">
+				<img class="useritemimg" src="images/16.png" /><a href="/smartcampus/userInfo/logout">退出登录</a>
+			</div>
+		</div>
+	</div>
+	<div class="ClearAll"></div>
+
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style="">
+	<div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 "
+		 style="width: 250px;" id="menuTree" name="menuTree">
+		<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style="">
+			<span id="c0_4_4_0" name="menuname"></span> <span id="c0_4_4_1" name="pid"></span>
+			<div class="ClearAll"></div>
+		</div>
+	</div>
+	<div id="contdiv" style="padding: 10px;background-color: #e6e6ef;float:left;">
+		<iframe id="contentFrm" style="background-color: #ffffff;width: 900px;border-radius: 3px;" name="contentFrm" scrolling=auto frameborder=0
+				marginheight=0 marginwidth=0 src=""></iframe>
+	</div>
+	<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-3" style=""></div>
+</body>
+</html>

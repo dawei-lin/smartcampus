@@ -1,0 +1,74 @@
+﻿ /*.combobox-textbox{
+	padding:0;
+	vertical-align:middle;
+	display:inline-block;
+} */
+
+
+/*下拉框列表SelectDIV的样式*/
+.combobox-selectDiv{
+	overflow:hidden;
+	background-color:white;
+	border:1px solid #c9c9cb;
+	border-radius: 5px 5px 5px 5px;
+}
+/*下拉框input样式*/
+.combobox-text{
+	display:block;
+	float:left;
+	margin:0 ;
+	padding:0px;
+	border:0px;
+	outline-style:none;
+	vertical-align:top;
+	white-space:nowrap;
+}
+/*下拉框label样式*/
+.combobox-addon{
+	display:block;
+	float:left;
+	text-align: center;
+	background-color:#35bdff;
+}
+.item-over{
+	background-color:#84d7ff;
+}
+/*选择后的颜色*/
+.item-selected{
+	background-color: #0093d9;
+	color:white;
+}
+
+
+
+.combobox-arrow{
+	width:100%;
+	display:block;
+	vertical-align:middle;
+	cursor:pointer;
+	overflow:hidden;
+	opacity:0.6;
+	text-decoration:none;
+	outline-style:none;
+}
+.combobox-icon{
+	background:url('images/combo_arrow.png') no-repeat center center;
+}
+.combobox-arrow:hover{
+	opacity:1;
+}
+.combobox-panel{
+	position:fixed;
+	display:block;
+	z-index:9999;
+	background-color:#fff;
+	overflow:auto; 
+	border:1px solid #c9c9cb;
+	color:#7e7e83;
+	border-radius: 5px 5px 5px 5px;
+}
+.combobox-item{
+	font-size:12px;
+	display:block;
+}
+

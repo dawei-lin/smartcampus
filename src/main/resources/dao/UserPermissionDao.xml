@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yihongda.smartcampus.dao.UserPermissionDao">
+    <insert id="savePermissionList" parameterType="com.yihongda.smartcampus.entity.UserPermission">
+        <foreach collection="list" item="userpermission" separator=";">
+            insert into userpermission(id,uid,pid)
+            values(uuid(),#{userpermission.uid},#{userpermission.pid})
+        </foreach>
+    </insert>
+</mapper>

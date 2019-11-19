@@ -1,0 +1,66 @@
+﻿@charset "UTF-8";
+.dotCtrl{
+	width:10px;
+	height:10px;
+	border:1px solid #ffffff;
+	margin-left:10px;
+	margin-right:10px;
+	display: block;
+	float: left;
+	border-radius: 50%
+}
+/**/
+.chosen{
+	border:1px solid #0093d9;
+	background:#0093d9;
+}
+.dotDiv,.upCtrl,.lCtrl,.rCtrl,.downCtrl{
+	cursor:pointer;
+	/*position:absolute;*/
+}
+.thumbnail{
+	cursor:pointer;
+	position: relative;
+}
+.ctrlImgDiv{
+	overflow:hidden;
+}
+
+.vctrl{/*所有形式的View控件样式*/
+	text-align:center;
+	position:absolute;
+	width:10px;
+	height:48px;
+	font-size:18px;
+	font-weight:bold;
+	color:white;
+	border:1px solid white;
+	background-color:#0093d9;
+	line-height:50px;
+}
+.UDC_cctrl{/*上下形式的Ctrl控件样式*/
+	margin:0 auto;
+	text-align:center;
+	width:10px;
+	height:48px;
+	font-size:18px;
+	font-weight:bold;
+	color:white;
+	border:1px solid white;
+	background-color:#0093d9;
+	line-height:50px;
+}
+.LRC_cctrl{/*左右形式的Ctrl控件样式*/
+	margin:0 auto;
+	float:left;
+	text-align:center;
+	width:48px;
+	height:10px;
+	font-size:18px;
+	font-weight:bold;
+	color:white;
+	border:1px solid white;
+	background-color:#0093d9;
+	line-height:12px;
+}
+

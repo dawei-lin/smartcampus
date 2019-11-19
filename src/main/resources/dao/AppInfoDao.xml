@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yihongda.smartcampus.dao.AppInfoDao">
+    <select id="getAppInfoListByParam" resultType="com.yihongda.smartcampus.entity.AppInfo">
+        SELECT
+        ai.id id,ai.appname appname,at.tname tname,ai.appurl appurl,ai.accesstype accesstype,ai.company
+        company,ai.accesstime accesstime,ai.status
+        FROM
+        appinfo ai inner join apptype at
+        on ai.apptype=at.id
+        where 1=1
+        <if test="appname!=null and appname.length!=0">
+            AND ai.appname like concat('%',#{appname},'%')
+        </if>
+        <if test="status!=null">
+            AND ai.status = #{status}
+        </if>
+        <if test="tname!=null and tname.length!=0">
+            AND at.tname like concat('%',#{tname},'%')
+        </if>
+        <if test="company!=null and company.length!=0">
+            AND ai.company like concat('%',#{company},'%')
+        </if>
+    </select>
+    <select id="getAppCount" resultType="Integer">
+        SELECT
+        count(1)
+        FROM
+        appinfo ai inner join apptype at
+        on ai.apptype=at.id
+        where 1=1
+        <if test="appname!=null and appname.length!=0">
+            AND ai.appname like concat('%',#{appname},'%')
+        </if>
+        <if test="status!=null">
+            AND ai.status = #{status}
+        </if>
+        <if test="tname!=null and tname.length!=0">
+            AND at.tname like concat('%',#{tname},'%')
+        </if>
+        <if test="company!=null and company.length!=0">
+            AND ai.company like concat('%',#{company},'%')
+        </if>
+    </select>
+</mapper>

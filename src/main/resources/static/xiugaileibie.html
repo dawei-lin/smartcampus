@@ -1,0 +1,72 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+var id=Request("id");
+
+$(document).ready(function(){
+$("[id=form1]").form("load",{url:"/smartcampus/appType/getAppType/"+id+""});
+
+
+
+
+
+
+$(document.body).on("click", "[id=c16_0_0_7]", function(){
+$("#form1").form("submit",{url:"/smartcampus/appType/updateAppType",success:function(msg){
+		if(msg.code=="200"){
+			parent.$.alert({msg:"保存成功"});parent.$.dialog.close();parent.$("#grid1").datagrid("reload",{/***other***/});
+		}
+		else{
+			parent.$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+$(document.body).on("click", "[id=c16_0_0_8]", function(){
+parent.$.dialog.close();
+});
+
+
+});
+
+</script>
+</head>
+<body id="xiugaileibie" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="width:400px;min-height:300px;"  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="float:left;width:400px;min-height:300px;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><img src="images/15.png" style="width:10px;height:10px;left:25px;position:absolute;top:31px;"id="c16_0_0_0" name="c16_0_0_0"/>
+<span style="font-weight:700;left:40px;position:absolute;top:28px;"id="c16_0_0_1" name="c16_0_0_1">修改类别</span>
+<input edit type="hidden" style="left:120px;position:absolute;top:28px;"id="c16_0_0_2" name="id"/>
+<span style="left:25px;position:absolute;top:60px;"id="c16_0_0_3" name="c16_0_0_3">类别名</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:85px;"id="c16_0_0_4" name="tname"/>
+<span style="left:25px;position:absolute;top:125px;"id="c16_0_0_5" name="c16_0_0_5">描述</span>
+<textarea style="width:245px;height:80px;left:25px;position:absolute;top:150px;vertical-align:top;"id="c16_0_0_6" name="tdesc"></textarea>
+<button type="button" style="color:#FFFFFF;width:90px;height:30px;left:25px;position:absolute;top:250px;background-color:#80B764;"id="c16_0_0_7" name="c16_0_0_7">确定</button>
+<button type="button" style="width:90px;height:30px;left:140px;position:absolute;top:250px;"id="c16_0_0_8" name="c16_0_0_8">取消</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@CHARSET "UTF-8";
+
+body{margin:0px;padding:0px;background-repeat: no-repeat;}
+img{border:none;vertical-align:middle;}
+a{color:#6e6e6e;text-decoration:none;}
+button{cursor:pointer;}
+button:hover{opacity:0.9;}
+.ANYROW span,.ANYROW button,.ANYROW input,.ANYROW textarea,.ANYROW img,.ANYROW select,.ANYROW list,.ANYSPINNER,.ANYIMAGEVIEW,.BLOCK,.ANYPANEL,.ANYLISTVIEW,.ANYFORMVIEW,.ANYGRIDVIEW,.ANYTABVIEW,.ANYMENU,.SUBMENU,.SUBMENU_1,.ANYTREEVIEW{display:block;float:left;}
+textarea {resize: none;}
+.ClearAll{clear:both;}
+.ClearLeft{clear:left;}
+.ClearRight{clear:right;}
+.FloatLeft{float:left;}
+.FloatRight{float:right;}
+.Hidden{display:none;}
+.Center{text-align: center;}
+.Left{text-align:left;}
+.Right{text-align: right;}
+.OverHidden{overflow: hidden;}
+.Block{display:block;}
+.None{display:none;}
+.DisplayTable{display: inline-table;}
+.ListItem{display:list-item;list-style: disc inside;}
+.RELATIVE {position: relative;}
+.WRAPPERH,WRAPPERV,WRAPPER{   /* 包裹着居中内容的子元素 */
+	position: absolute;    /* 子元素绝对定位 */
+}

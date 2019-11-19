@@ -1,0 +1,110 @@
+﻿@charset "UTF-8";
+
+/*table线Border去除*/
+table{
+	border-collapse:separate;
+	font-szie:12px;
+}
+.ANYROW .ANYGRIDVIEW .MAINTABLE{
+	border-left:1px solid #909BA9;
+	border-right:1px solid #909BA9;
+	border-top:1px solid #909BA9;
+}
+/*表格颜色控制*/
+.ANYROW .ANYGRIDVIEW .TABLECARD{
+	width:98%;
+	margin:1% 1% 1% 1%;
+	overflow:auto;
+	height:70%;
+	
+	/*background-color: #35bdff !important;*/
+	border-radius: 7px 7px 7px 7px;
+}
+.ANYROW .ANYGRIDVIEW .TITLE{
+	background-color: #80B764;
+	height:32px;
+}
+.ANYROW .ANYGRIDVIEW .BODY{
+	height:28px;
+	
+}
+.ANYROW .ANYGRIDVIEW .TOOLBAR{
+	margin:1% 1% 1% 1% ;
+	/*height:10%;*/
+}
+.ANYROW .ANYGRIDVIEW .PAGER{
+	margin:1% 1% 1% 1% ;
+	/*height:10%;*/
+}
+/*TD内初始的padding*/
+.MAINTABLE td{
+/* 	padding-left:10px; */
+	border-bottom:1px solid #909BA9;
+}
+
+/*白色TR*/
+.WHITETR{
+	 background-color: white;
+}
+
+/*TD之间的白色分隔线*/
+.LINETD{
+	/* border-left:3px solid #ffffff; */
+}
+
+
+
+.rownum,.CHECKBOX_1{
+	text-align : center;
+	width : 28px;
+}
+/*悬浮*/
+.row-over{
+	background-color : #80B764;
+	opacity:0.5;
+	/*background-color:rgba(128,183,100,0.5)*/
+}
+/*选中*/
+.row-selected{
+	background-color : #0093d9;
+	/* background-color : #006393; */
+	color:white;
+}
+
+.pn-icon{
+	margin:3px;
+	width:16px;
+	height:16px;
+	display:inline-block;
+	vertical-align:middle;
+}
+.icon-first{
+	background-image:url(images/pagination_icons.png);
+	background-position:0 0;
+}
+.icon-prev{
+	background-image:url(images/pagination_icons.png);
+	background-position:-16px 0;
+}
+.icon-next{
+	background-image:url(images/pagination_icons.png);
+	background-position:-32px 0;
+}
+.icon-last{
+	background-image:url(images/pagination_icons.png);
+	background-position:-48px 0;
+}
+input#cPage{
+	font-size:12px;
+	color:#7e7e83 !important;
+	width:22px;
+	height:16px;
+	border:1px solid #c9c9cb;
+	border-radius: 5px 5px 5px 5px;
+}
+tr.p-num{
+	vertical-align:middle;
+}
+.ANYROW .ANYGRIDVIEW .MAINTABLE button{
+	cursor: pointer;
+}

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  6个优先级从高到低依次为：OFF、FATAL、ERROR、WARN、INFO、DEBUG、TRACE、 ALL。
+  如果设置优先级为WARN，那么OFF、FATAL、ERROR、WARN 4个级别的log能正常输出
+  设置为OFF 表示不记录log4j2本身的日志，
+ -->
+ 
+<!-- status：用来指定log4j本身的打印日志级别,monitorInterval:指定log4j自动重新配置(自动检测修改配置文件)的监测间隔时间(秒) -->
+<configuration status="info" monitorInterval="30">
+  <!-- 自己设置属性，后面通过${}来访问 -->
+ <properties>
+	<!--变量定义--> 
+    <!-- <property name="LOG_HOME">${web:rootDir}/logs</property> -->
+    <property name="LOG_HOME">../logs</property>
+    <property name="LOG_PATH">${LOG_HOME}/backups</property>
+    <!-- 项目名称 -->
+	<property name="SERVER_NAME">smartcampus</property>
+	<!-- 备份日志大小 -->
+	<property name="LOG_FILE_MAX_SIZE">60MB</property>
+	<!-- 日志存档最大文件数 -->
+	<property name="LOG_FILE_MAX_STRATEGY">10</property>
+	<!-- 日志等级 -->
+	<property name="LOG_LEVEL">debug</property>
+  </properties>
+  <appenders>
+    <!--Appender 1. 输出到Console控制台，指定输出格式和过滤器等级为INFO -->
+    <Console name="Console" target="SYSTEM_OUT">
+      <!--添加阀值过滤器ThresholdFilter指定日志消息的输出最低层次-->
+      <!-- 只输出level及以上级别的信息(onMatch)，其他的(level以下的)直接拒绝(onMismatch) -->
+      <ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+    </Console>
+ 
+    <!--Appender 2. 文件会打印出所有信息，这个log每次运行程序会自动清空，由append属性决定，这个适合临时测试用-->
+    <File name="allLog" fileName="${LOG_HOME}/${SERVER_NAME}_test.log" append="false">
+      <ThresholdFilter level="ALL" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout charset="UTF-8" pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+    </File>
+ 
+    <!--Appender 3. 输出到滚动保存的文件, 程序重启日志可追加，触发保存日志文件的条件是日志文件大于3KB，只保存最新的10个日志-->
+    <RollingFile name="debugLog" fileName="${LOG_HOME}/${SERVER_NAME}_debug.log"
+    	  filePattern="${LOG_PATH}/debug-%i.log" append="true">
+      <Filters>
+          <ThresholdFilter level="info" onMatch="DENY" onMismatch="NEUTRAL"/>
+          <ThresholdFilter level="debug" onMatch="ACCEPT" onMismatch="DENY" />
+	  </Filters>
+      <PatternLayout charset="UTF-8" pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+      <Policies>
+          <SizeBasedTriggeringPolicy size="${LOG_FILE_MAX_SIZE}"/>
+      </Policies>
+      <!-- DefaultRolloverStrategy中的参数max，可以限制 SizeBasedTriggeringPolicy中size超出后，只保留max个存档-->
+      <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+      <DefaultRolloverStrategy max="${LOG_FILE_MAX_STRATEGY}"/>
+    </RollingFile>
+ 
+    <!--Appender 4. 输出到滚动保存的文件, 程序重启日志可追加，触发保存日志文件的条件是日志文件大于3KB，只保存最新的10个日志-->
+    <RollingFile name="infoLog" fileName="${LOG_HOME}/${SERVER_NAME}_info.log"
+    	  filePattern="${LOG_PATH}/info-%i.log" append="true">
+      <Filters>
+          <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+          <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+	  </Filters>
+      <PatternLayout charset="UTF-8" pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+      <Policies>
+          <SizeBasedTriggeringPolicy size="${LOG_FILE_MAX_SIZE}"/>
+      </Policies>
+      <!-- DefaultRolloverStrategy 中的参数max，可以限制 SizeBasedTriggeringPolicy中size超出后，只保留max个存档-->
+      <DefaultRolloverStrategy max="${LOG_FILE_MAX_STRATEGY}"/>
+    </RollingFile>
+ 
+    <!--Appender 5. 输出到滚动保存的文件, 触发保存日志文件的条件是每分钟第一次的日志事件。ERROR日志是按分钟产生日志 -->
+    <RollingFile name="errorLog" fileName="${LOG_HOME}/${SERVER_NAME}_error.log"
+           filePattern="${LOG_PATH}/error-%d{yyyy-MM-dd_HH-mm}.log" append="true">
+      <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+      <PatternLayout charset="UTF-8" pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+       <Policies>
+            <SizeBasedTriggeringPolicy size="${LOG_FILE_MAX_SIZE}" />
+        </Policies>
+        <DefaultRolloverStrategy max="${LOG_FILE_MAX_STRATEGY}"/>
+    </RollingFile>
+ 
+ 	<!-- Appender 6 
+    <RollingFile name="rollingFile" fileName="${LOG_HOME}/${SERVER_NAME}_rar.log"
+           filePattern="${LOG_HOME}/$${date:yyyy-MM}/${FILE_NAME}-%d{MM-dd-yyyy}-%i.log.gz" append="true">
+      <PatternLayout charset="UTF-8" pattern="[%date{yyyy-MM-dd HH:mm:ss.SSS z}] [%-5level] [${SERVER_NAME}][%thread] [%class{36}.%M() line:%L] - %msg%xEx%n"/>
+      日志文件最大值 第二天压缩
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+        <SizeBasedTriggeringPolicy size="${LOG_FILE_MAX_SIZE}"/>
+      </Policies>
+    </RollingFile> -->
+  </appenders>
+  
+  <!--Logger节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等。-->
+  <!-- 定义logger，只有定义了logger并引入的appender，appender才会生效 -->
+  <loggers>
+       <!-- 设置第三方日志库的等级，其中name值为包路径前缀/包路径全名/日志名等 -->
+		<logger name="org.springframework" level="error" additivity="false">
+		    <AppenderRef ref="Console"/>
+		</logger>
+		<logger name="org.springframework.context" level="error">
+		</logger>
+		<logger name="java.sql.Connection" level="error">
+		</logger>
+		<logger name="java.sql.Statement" level="error">
+		</logger>
+		<logger name="java.sql.PreparedStatement" level="error">
+		</logger>
+		<logger name="org.quartz" level="WARN">
+		</logger>
+		
+		<!-- 设置httpclient-x.x.x.jar包的日志等级 begin -->
+		<logger name="org.apache" level="WARN" />
+    	<logger name="httpclient" level="WARN" />
+    	<!-- 设置httpclient-x.x.x.jar包的日志等级 end -->
+    	
+		<logger name="springfox.documentation" level="WARN"/>
+		<logger name="org.mybatis" level="WARN" />
+		<!--若是additivity设为false，则子Logger只会在自己的appender里输出，而不会在 父Logger的appender里输出。-->
+		<logger name="org.hibernate" level="WARN" additivity="false"/>
+		<logger name="io.netty" level="WARN" />
+		
+	    <!--建立一个默认的root的logger-->
+	    <root level="${LOG_LEVEL}"><!-- 设置项目代码的日志等级 -->
+	      <appender-ref ref="Console"/>
+	      <appender-ref ref="allLog"/>
+	      <appender-ref ref="debugLog"/>
+	      <appender-ref ref="infoLog"/>
+	      <appender-ref ref="errorLog"/>
+	    </root>
+  </loggers>
+</configuration>

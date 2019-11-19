@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=353"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+$("[id=form1]").form("load",{url:"/smartcampus/appInfo/commonUseApp"});
+
+
+$(document.body).on("click", "[id=c10_2_2_3]", function(){
+window.location.href="{{form1.url}}.html";
+});
+
+
+
+$("[id=form2]").form("load",{url:"/smartcampus/appInfo/useApp"});
+
+
+$(document.body).on("click", "[id=c10_5_5_3]", function(){
+window.location.href="{{form1.url}}.html";
+});
+
+
+});
+
+</script>
+</head>
+<body id="wodeyingyong" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="padding-top:10px;"  ><img src="images/15.png" style="width:10px;height:10px;margin-left:18px;margin-top:5px;"id="c10_0" name="c10_0"/>
+<span style="font-size:14px;font-weight:700;padding-left:5px;"id="c10_1" name="c10_1">常用应用</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style="min-height:15px;border-bottom:1px solid #EEEEF8;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-3" style="padding-top:5px;min-height:109px;"  ><div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 "id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><div class="WRAPPERH"><img src="" style="width:100px;height:100px;"id="c10_2_2_0" name="applogo"/>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><span style="font-weight:700;"id="c10_2_2_1" name="appname"></span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><span id="c10_2_2_2" name="company"></span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><button type="button" style="width:90px;height:30px;background-color:#EEEEF9;"id="c10_2_2_3" name="c10_2_2_3">使用</button>
+</div><div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-4" style="padding-top:20px;"  ><img src="images/15.png" style="width:10px;height:10px;margin-left:18px;margin-top:5px;"id="c10_3" name="c10_3"/>
+<span style="font-size:14px;font-weight:700;padding-left:5px;"id="c10_4" name="c10_4">我的全部应用</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-5" style="min-height:15px;border-bottom:1px solid #EEEEF8;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-6" style="padding-top:5px;min-height:134px;"  ><div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 "id="form2" name="form2">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><div class="WRAPPERH"><img src="" style="width:100px;height:100px;"id="c10_5_5_0" name="applogo"/>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><span style="font-weight:700;"id="c10_5_5_1" name="appname"></span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><span id="c10_5_5_2" name="company"></span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1" style="padding-bottom:3px;padding-top:3px;"  ><div class="WRAPPERH"><button type="button" style="width:90px;height:30px;background-color:#EEEEF9;"id="c10_5_5_3" name="c10_5_5_3">使用</button>
+</div><div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

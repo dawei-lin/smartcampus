@@ -1,0 +1,49 @@
+﻿@charset "UTF-8";
+/*菜单名右边的折叠图标*/
+.ANYROW .MENUSPANDIV{
+	margin-top:20%;
+	margin-right:20%;
+	float:right;
+	width:5%;
+	height:5%;
+}
+/*span图标*/
+.ANYROW .MENUSPANDIV span{
+	margin-top:2px;
+	float:right!important;
+	background-color:#0093d9 !important;
+	width:10px!important;
+	height:2px!important;
+}
+
+.MAINITEM{
+	/* 一级菜单 */
+	float : left;
+	text-align : center;
+}
+.ALLSUBITEM{
+	/* 所有子菜单 */
+	float:left; 
+	text-align : center;
+}
+
+/* 主菜单鼠标事件 */
+.MOUSEOVER_1{
+	color : white !important;
+	background-color :#0093d9!important;
+	border-radius: 5px 5px 5px 5px !important;
+}
+/*子菜单鼠标事件*/
+.MOUSEOVER_2{
+	color:white !important;
+	background-color :#bbd9f0!important;
+	border-radius: 5px 5px 5px 5px !important;
+}
+
+.ANYROW .MENUSPANDIV span{
+	margin-top:2px;
+	float:left!important;
+	background-color:#9d9d9d;
+	width:10px!important;
+	height:2px!important;
+}

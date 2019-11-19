@@ -1,0 +1,81 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+
+
+
+
+
+
+
+$("[id=roleid]").combobox({url:"/smartcampus/roleInfo/roleInfoListByParam",textField:'rolename',multiple:false,valueField:'id'});
+$(document.body).on("click", "[id=c26_0_0_10]", function(){
+$("#grid1").datagrid("reload",{data:$('[id=query1]').form('getCtrlData')});
+});
+
+$(document.body).on("click", "[id=c26_0_0_11]", function(){
+$("#query1").form("reset");
+});
+
+$(document.body).on("click", "[id=c26_1_1_11]", function(){$.ajax({type:"POST",url:"/smartcampus/user/authorize/"+$('[id=grid1]').datagrid('getSelected').id+"",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:{},beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"授权成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"授权失败"});},complete:function (XMLHttpRequest, textStatus) {}});});$(document.body).on("click", "[id=c26_1_1_12]", function(){$.confirm({msg:"确定要删除选中记录吗？",fn:function(){$.ajax({type:"POST",url:"/smartcampus/user/deleteUser/"+$('[id=grid1]').datagrid('getSelected').id+"",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:$.getCtrlData("c26_1_1_12"),beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"删除成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"删除失败"});},complete:function (XMLHttpRequest, textStatus) {}});}});});
+$("[id=grid1]").datagrid({url:'/smartcampus/user/unauditedUserListByParam',onLoadSuccess:function(){},pagination:true,columns:[{field:'<span datavalue="id" name="id"></span>',title:'',hidden:true},{field:'<span datavalue="username" id="c26_1_1_6" name="username"></span>',title:'<span style="color:#F5FFFA;text-align:center;"id="c26_1_1_0" name="c26_1_1_0">用户名</span>',width:200},{field:'<span datavalue="realname" id="c26_1_1_7" name="realname"></span>',title:'<span style="color:#F5FFFA;"id="c26_1_1_1" name="c26_1_1_1">真实姓名</span>',width:200},{field:'<span datavalue="tel" id="c26_1_1_8" name="tel"></span>',title:'<span style="color:#F5FFFA;"id="c26_1_1_2" name="c26_1_1_2">手机号</span>',width:200},{field:'<span datavalue="code" id="c26_1_1_9" name="code"></span>',title:'<span style="color:#F5FFFA;"id="c26_1_1_3" name="c26_1_1_3">工号/学号</span>',width:200},{field:'<span datavalue="rolename" id="c26_1_1_10" name="rolename"></span>',title:'<span style="color:#F5FFFA;"id="c26_1_1_4" name="c26_1_1_4">角色</span>',width:200},{field:'<button type="button" style="color:#F5F5DC;width:40px;height:30px;margin-left:0px;margin-top:0px;background-color:#80B764;"id="c26_1_1_11" name="c26_1_1_11">授权</button><button type="button" style="width:40px;height:30px;"id="c26_1_1_12" name="c26_1_1_12">删除</button>',title:'<span style="color:#F5FFFA;"id="c26_1_1_5" name="c26_1_1_5">操作</span>',width:200}],checkbox:true,param:grid1});
+});
+
+</script>
+</head>
+<body id="yonghushenhe" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:99%;width:-webkit-fill-available;min-height:130px;"id="query1" name="query1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><span style="left:20px;position:absolute;top:10px;"id="c26_0_0_0" name="c26_0_0_0">用户名</span>
+<input edit type="text" style="width:180px;height:30px;left:20px;position:absolute;top:30px;"id="username" name="username"/>
+<span style="left:220px;position:absolute;top:10px;"id="c26_0_0_2" name="c26_0_0_2">姓名</span>
+<input edit type="text" style="width:180px;height:30px;left:220px;position:absolute;top:30px;"id="realname" name="realname"/>
+<span style="left:420px;position:absolute;top:10px;"id="c26_0_0_4" name="c26_0_0_4">手机号</span>
+<input edit type="text" style="width:180px;height:30px;left:420px;position:absolute;top:30px;"id="tel" name="tel"/>
+<span style="left:20px;position:absolute;top:65px;"id="c26_0_0_6" name="c26_0_0_6">学号</span>
+<input edit type="text" style="width:180px;height:30px;left:20px;position:absolute;top:85px;"id="code" name="code"/>
+<span style="left:220px;position:absolute;top:65px;"id="c26_0_0_8" name="c26_0_0_8">角色</span>
+<select style="width:180px;left:220px;position:absolute;top:85px;"id="roleid" name="roleid">
+</select>
+<button type="button" style="color:#F5F5DC;width:120px;height:30px;left:620px;position:absolute;top:30px;background-color:#80B764;"id="c26_0_0_10" name="c26_0_0_10">查询</button>
+<button type="button" style="width:120px;height:30px;left:620px;position:absolute;top:85px;background-color:#EEEEF9;"id="c26_0_0_11" name="c26_0_0_11">清空</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style=""  ><div class="ANYGRIDVIEW P_ANYGRIDVIEW P_ANYGRIDVIEW_1 P_GRIDVIEW_1 " style="width:99%;width:-webkit-fill-available;"id="grid1" name="grid1">
+<table class="MAINTABLE" style="width:100%;" border="0" cellpadding="0" cellspacing="0"></table>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1 PAGER" style="" >
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

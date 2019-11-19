@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=350" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.css?v=350" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=350"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=350"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.js?v=350"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+
+
+$(document.body).on("click", "[id=c3_0_0_4]", function(){
+$("#grid1").datagrid("reload",{data:$('[id=query1]').form('getCtrlData')});
+});
+
+$(document.body).on("click", "[id=c3_0_0_5]", function(){
+$("#query1").form("reset");
+});
+
+$(document.body).on("click", "[id=statusbtn]", function(){var gdata=$('[id=grid1]').datagrid('getSelected');var status=gdata.status;if(status==0||status=="启用"){status=1;}else{status=0;}$.ajax({type:"POST",url:"/smartcampus/roleInfo/status",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:{id:gdata.id,status:status},beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"保存成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"保存失败"});},complete:function (XMLHttpRequest, textStatus) {}});});$(document.body).on("click", "[id=c3_1_1_7]", function(){$.dialog.show({url:"jiaosequanxianfenpei.html?id="+$('[id=grid1]').datagrid('getSelected').id+"",title:"配置角色权限",height:380,width:400});});$(document.body).on("click", "[id=c3_1_1_8]", function(){$.dialog.show({url:"xiugaijiaose.html?id="+$('[id=grid1]').datagrid('getSelected').id+"",title:"修改角色",height:570,width:450});});$(document.body).on("click", "[id=c3_1_1_9]", function(){$.confirm({msg:"确定要删除选中记录吗？",fn:function(){$.ajax({type:"POST",url:"/smartcampus/roleInfo/deleteRole/"+$('[id=grid1]').datagrid('getSelected').id+"",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:$.getCtrlData("c3_1_1_9"),beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"删除成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"删除失败"});},complete:function (XMLHttpRequest, textStatus) {}});}});});
+$("[id=grid1]").datagrid({url:'/smartcampus/roleInfo/roleInfoListByParam',onLoadSuccess:function(){var $obj=$("[id=statusbtn]");
+$.each($obj,function(i,e){
+	var o=$(e);
+	if(o.html()==0||o.html()=="启用"){
+		o.html("启用");
+		o.css("background-color","#80B764");
+	}
+	else{
+		o.html("禁用");
+		o.css("background-color","#EF5959");
+	}
+});},pagination:true,columns:[{field:'<span datavalue="id" name="id"></span>',title:'',hidden:true},{field:'<span datavalue="rolename" id="c3_1_1_4" name="rolename"></span>',title:'<span style="color:#F5FFFA;"id="c3_1_1_1" name="c3_1_1_1">角色</span>',width:400},{field:'<span datavalue="roledes" id="c3_1_1_5" name="roledes"></span>',title:'<span style="color:#F5FFFA;"id="c3_1_1_2" name="c3_1_1_2">描述</span>',width:400},{field:'<button type="button" datavalue="status" style="color:#FFFFFF;background-color:#EF5959;"id="statusbtn" name="status"></button><button type="button" id="c3_1_1_7" name="c3_1_1_7">权限</button><button type="button" id="c3_1_1_8" name="c3_1_1_8">修改</button><button type="button" id="c3_1_1_9" name="c3_1_1_9">删除</button>',title:'<span style="color:#F5FFFA;"id="c3_1_1_3" name="c3_1_1_3">操作</span>',width:400}],checkbox:true});$(document.body).on("click", "[id=c3_1_1_0]", function(){
+$.dialog.show({url:"xinzengjiaose.html",title:"新增角色",height:570,width:450});
+});
+
+
+});
+
+</script>
+</head>
+<body id="jiaosexinxi" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:99%;width:-webkit-fill-available;min-height:70px;"id="query1" name="query1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><span style="left:20px;position:absolute;top:10px;"id="c3_0_0_0" name="c3_0_0_0">角色名</span>
+<input edit type="text" style="width:180px;height:30px;left:20px;position:absolute;top:30px;"id="rolename" name="rolename"/>
+<span style="left:246px;position:absolute;top:13px;"id="c3_0_0_2" name="c3_0_0_2">状态</span>
+<select style="width:180px;left:246px;position:absolute;top:30px;"id="status" name="status">
+<option value ="1">启用</option>
+<option value ="0">禁用</option>
+</select>
+<button type="button" style="color:#F5F5DC;width:120px;height:30px;left:455px;position:absolute;top:29px;background-color:#80B764;"id="c3_0_0_4" name="c3_0_0_4">查询</button>
+<button type="button" style="width:120px;height:30px;left:593px;position:absolute;top:29px;background-color:#EEEEF9;"id="c3_0_0_5" name="c3_0_0_5">清空</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style=""  ><div class="ANYGRIDVIEW P_ANYGRIDVIEW P_ANYGRIDVIEW_1 P_GRIDVIEW_1 " style="width:99%;width:-webkit-fill-available;"id="grid1" name="grid1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1 TOOLBAR" style="" ><button type="button" style="color:#F5F5DC;width:120px;height:30px;margin-left:0px;margin-top:0px;background-color:#80B764;"id="c3_1_1_0" name="c3_1_1_0">新增</button>
+<div class="ClearAll"></div>
+</div><table class="MAINTABLE" style="width:100%;" border="0" cellpadding="0" cellspacing="0"></table>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1 PAGER" style="" >
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+var id=Request("id");
+
+$(document).ready(function(){
+$("[id=form1]").form("load",{url:"/smartcampus/user/getUser/"+id+""});
+
+
+
+
+
+
+
+
+
+
+
+$("[id=c20_0_0_12]").combobox({url:"/smartcampus/roleInfo/roleInfoListByParam",textField:'rolename',multiple:false,valueField:'id'});
+$(document.body).on("click", "[id=c20_0_0_13]", function(){
+$("#form1").form("submit",{url:"/smartcampus/user/updateUser",success:function(msg){
+		if(msg.code=="200"){
+			parent.$.alert({msg:"保存成功"});parent.$.dialog.close();parent.$("#grid1").datagrid("reload",{/***other***/});
+		}
+		else{
+			parent.$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+$(document.body).on("click", "[id=c20_0_0_14]", function(){
+parent.$.dialog.close();
+});
+
+
+});
+
+</script>
+</head>
+<body id="xiugaiyonghu" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="width:600px;min-height:300px;"  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:600px;min-height:300px;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><img src="images/15.png" style="width:10px;height:10px;left:25px;position:absolute;top:31px;"id="c20_0_0_0" name="c20_0_0_0"/>
+<span style="font-weight:700;left:40px;position:absolute;top:28px;"id="c20_0_0_1" name="c20_0_0_1">修改用户</span>
+<input edit type="hidden" style="left:120px;position:absolute;top:28px;"id="c20_0_0_2" name="id"/>
+<span style="left:25px;position:absolute;top:60px;"id="c20_0_0_3" name="c20_0_0_3">用户名</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:85px;"id="c20_0_0_4" name="username"/>
+<span style="left:297px;position:absolute;top:60px;"id="c20_0_0_5" name="c20_0_0_5">姓名</span>
+<input edit type="text" style="width:245px;height:30px;left:297px;position:absolute;top:85px;"id="c20_0_0_6" name="realname"/>
+<span style="left:25px;position:absolute;top:125px;"id="c20_0_0_7" name="c20_0_0_7">工号/学号</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:150px;"id="c20_0_0_8" name="code"/>
+<span style="left:297px;position:absolute;top:125px;"id="c20_0_0_9" name="c20_0_0_9">手机号</span>
+<input edit type="text" style="width:245px;height:30px;left:297px;position:absolute;top:150px;"id="c20_0_0_10" name="tel"/>
+<span style="left:25px;position:absolute;top:190px;"id="c20_0_0_11" name="c20_0_0_11">角色</span>
+<select style="width:242px;left:25px;position:absolute;top:215px;"id="c20_0_0_12" name="roleid">
+</select>
+<button type="button" style="color:#FFFFFF;width:90px;height:30px;left:25px;position:absolute;top:260px;background-color:#80B764;"id="c20_0_0_13" name="c20_0_0_13">确定</button>
+<button type="button" style="width:90px;height:30px;left:140px;position:absolute;top:260px;"id="c20_0_0_14" name="c20_0_0_14">取消</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

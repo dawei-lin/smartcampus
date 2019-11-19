@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+$(document.body).on("click", "[id=c24_0_0_0]", function(){
+$("#grid1").datagrid("reload",{data:$('[id=query1]').form('getCtrlData')});
+});
+
+$(document.body).on("click", "[id=c24_0_0_1]", function(){
+$("#query1").form("reset");
+});
+
+
+
+$(document.body).on("click", "[id=c24_1_1_6]", function(){$.dialog.show({url:"xiugaileibie.html?id="+$('[id=grid1]').datagrid('getSelected').id+"",title:"修改类别",height:300,width:400});});$(document.body).on("click", "[id=c24_1_1_7]", function(){$.confirm({msg:"确定要删除选中记录吗？",fn:function(){$.ajax({type:"POST",url:"/smartcampus/appType/deleteAppType/"+$('[id=grid1]').datagrid('getSelected').id+"",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:$.getCtrlData("c24_1_1_7"),beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"删除成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"删除失败"});},complete:function (XMLHttpRequest, textStatus) {}});}});});
+$("[id=grid1]").datagrid({url:'/smartcampus/appType/appTypeListByName',onLoadSuccess:function(){},pagination:true,columns:[{field:'<span datavalue="id" name="id"></span>',title:'',hidden:true},{field:'<span datavalue="tname" id="c24_1_1_4" name="tname"></span>',title:'<span style="color:#F5FFFA;text-align:center;"id="c24_1_1_1" name="c24_1_1_1">类别名</span>',width:400},{field:'<span datavalue="tdesc" id="c24_1_1_5" name="tdesc"></span>',title:'<span style="color:#F5FFFA;"id="c24_1_1_2" name="c24_1_1_2">描述&nbsp;</span>',width:400},{field:'<button type="button" id="c24_1_1_6" name="c24_1_1_6">修改</button><button type="button" id="c24_1_1_7" name="c24_1_1_7">删除</button>',title:'<span style="color:#F5FFFA;"id="c24_1_1_3" name="c24_1_1_3">操作</span>',width:400}],checkbox:true,param:grid1});$(document.body).on("click", "[id=c24_1_1_0]", function(){
+$.dialog.show({url:"xinzengleibie.html",title:"新增类别",height:300,width:400});
+});
+
+
+});
+
+</script>
+</head>
+<body id="yingyongfenlei" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:99%;width:-webkit-fill-available;min-height:70px;"id="query1" name="query1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><button type="button" style="color:#F5F5DC;width:120px;height:30px;left:231px;position:absolute;top:30px;background-color:#80B764;"id="c24_0_0_0" name="c24_0_0_0">查询</button>
+<button type="button" style="width:120px;height:30px;left:371px;position:absolute;top:30px;background-color:#EEEEF9;"id="c24_0_0_1" name="c24_0_0_1">清空</button>
+<input edit type="text" style="width:180px;height:30px;left:20px;position:absolute;top:30px;"id="tname" name="tname"/>
+<span style="left:20px;position:absolute;top:10px;"id="c24_0_0_3" name="c24_0_0_3">应用名</span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style=""  ><div class="ANYGRIDVIEW P_ANYGRIDVIEW P_ANYGRIDVIEW_1 P_GRIDVIEW_1 " style="width:99%;width:-webkit-fill-available;"id="grid1" name="grid1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1 TOOLBAR" style="" ><button type="button" style="color:#F5F5DC;width:120px;height:30px;margin-left:0px;margin-top:0px;background-color:#80B764;"id="c24_1_1_0" name="c24_1_1_0">新增</button>
+<div class="ClearAll"></div>
+</div><table class="MAINTABLE" style="width:100%;" border="0" cellpadding="0" cellspacing="0"></table>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1 PAGER" style="" >
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

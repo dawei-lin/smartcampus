@@ -1,0 +1,90 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.datagrid/jquery.yhd.datagrid.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+
+
+
+
+$(document.body).on("click", "[id=c25_0_0_6]", function(){
+$("#grid1").datagrid("reload",{data:$('[id=query1]').form('getCtrlData')});
+});
+
+$(document.body).on("click", "[id=c25_0_0_7]", function(){
+$("#query1").form("reset");
+});
+
+$(document.body).on("click", "[id=statusbtn]", function(){var gdata=$('[id=grid1]').datagrid('getSelected');var status=gdata.status;if(status==0||status=="启用"){status=1;}else{status=0;}$.ajax({type:"POST",url:"/smartcampus/appInfo/status",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:{id:gdata.id,status:status},beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"保存成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"保存失败"});},complete:function (XMLHttpRequest, textStatus) {}});});$(document.body).on("click", "[id=c25_1_1_13]", function(){$.dialog.show({url:"xiugaiyingyong.html?id="+$('[id=grid1]').datagrid('getSelected').id+"",title:"修改应用",height:500,width:600});});$(document.body).on("click", "[id=c25_1_1_14]", function(){$.confirm({msg:"确定要删除选中记录吗？",fn:function(){$.ajax({type:"POST",url:"/smartcampus/appInfo/deleteAppInfo/"+$('[id=grid1]').datagrid('getSelected').id+"",dataType:"",timeout:-1,headers:{},traditional:true,xhrFields: {withCredentials: true},crossDomain: true,data:$.getCtrlData("c25_1_1_14"),beforeSend:function (XMLHttpRequest) {},success:function (data, textStatus) {$.alert({msg:"删除成功"});$("#grid1").datagrid("reload",{/***other***/});},error:function (XMLHttpRequest, textStatus, errorThrown){$.alert({msg:"删除失败"});},complete:function (XMLHttpRequest, textStatus) {}});}});});
+$("[id=grid1]").datagrid({url:'/smartcampus/appInfo/appInfoListByParam',onLoadSuccess:function(){var $obj=$("[id=statusbtn]");
+$.each($obj,function(i,e){
+	var o=$(e);
+	if(o.html()==0||o.html()=="启用"){
+		o.html("启用");
+		o.css("background-color","#80B764");
+	}
+	else{
+		o.html("禁用");
+		o.css("background-color","#EF5959");
+	}
+});},pagination:true,columns:[{field:'<span datavalue="id" name="id"></span>',title:'',hidden:true},{field:'<span datavalue="appname" id="c25_1_1_7" name="appname"></span>',title:'<span style="color:#F5FFFA;text-align:center;"id="c25_1_1_1" name="c25_1_1_1">应用名</span>',width:200},{field:'<span datavalue="tname" id="c25_1_1_8" name="tname"></span>',title:'<span style="color:#F5FFFA;"id="c25_1_1_2" name="c25_1_1_2">应用类别</span>',width:200},{field:'<span datavalue="appurl" id="c25_1_1_9" name="appurl"></span>',title:'<span style="color:#F5FFFA;"id="c25_1_1_3" name="c25_1_1_3">应用地址</span>',width:200},{field:'<span datavalue="apptype" id="c25_1_1_10" name="apptype"></span>',title:'<span style="color:#F5FFFA;"id="c25_1_1_4" name="c25_1_1_4">接入方式</span>',width:200},{field:'<span datavalue="company" id="c25_1_1_11" name="company"></span>',title:'<span style="color:#F5FFFA;"id="c25_1_1_5" name="c25_1_1_5">厂商名</span>',width:200},{field:'<button type="button" datavalue="status" style="color:#FFFFFF;background-color:#EF5959;"id="statusbtn" name="status"></button><button type="button" id="c25_1_1_13" name="c25_1_1_13">修改</button><button type="button" id="c25_1_1_14" name="c25_1_1_14">删除</button>',title:'<span style="color:#F5FFFA;"id="c25_1_1_6" name="c25_1_1_6">操作</span>',width:200}],checkbox:true,param:grid1});$(document.body).on("click", "[id=c25_1_1_0]", function(){
+$.dialog.show({url:"xinzengyingyong.html",title:"新增应用",height:500,width:600});
+});
+
+
+});
+
+</script>
+</head>
+<body id="yingyongxinxi" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:99%;width:-webkit-fill-available;min-height:70px;"id="query1" name="query1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><span style="left:20px;position:absolute;top:10px;"id="c25_0_0_0" name="c25_0_0_0">应用名</span>
+<input edit type="text" style="width:180px;height:30px;left:20px;position:absolute;top:30px;"id="appname" name="appname"/>
+<span style="left:220px;position:absolute;top:10px;"id="c25_0_0_2" name="c25_0_0_2">应用类别</span>
+<input edit type="text" style="width:180px;height:30px;left:220px;position:absolute;top:30px;"id="tname" name="tname"/>
+<span style="left:420px;position:absolute;top:10px;"id="c25_0_0_4" name="c25_0_0_4">厂商名&nbsp;</span>
+<input edit type="text" style="width:180px;height:30px;left:420px;position:absolute;top:30px;"id="company" name="company"/>
+<button type="button" style="color:#F5F5DC;width:120px;height:30px;left:620px;position:absolute;top:30px;background-color:#80B764;"id="c25_0_0_6" name="c25_0_0_6">查询</button>
+<button type="button" style="width:120px;height:30px;left:760px;position:absolute;top:30px;background-color:#EEEEF9;"id="c25_0_0_7" name="c25_0_0_7">清空</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style=""  ><div class="ANYGRIDVIEW P_ANYGRIDVIEW P_ANYGRIDVIEW_1 P_GRIDVIEW_1 " style="width:99%;width:-webkit-fill-available;"id="grid1" name="grid1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1 TOOLBAR" style="" ><button type="button" style="color:#F5F5DC;width:120px;height:30px;margin-left:0px;margin-top:0px;background-color:#80B764;"id="c25_1_1_0" name="c25_1_1_0">新增</button>
+<div class="ClearAll"></div>
+</div><table class="MAINTABLE" style="width:100%;" border="0" cellpadding="0" cellspacing="0"></table>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1 PAGER" style="" >
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+$("[id=form1]").form("load",{url:"/smartcampus/schoolInfo",param:form1});
+
+
+
+
+
+
+
+
+$("[id=schooltype]").combobox({url:"/smartcampus/schoolInfo/schoolTypeList",textField:'schoolname',multiple:false,valueField:'schooltype'});
+
+
+
+
+
+
+$(document.body).on("click", "[id=c23_2_2_16]", function(){
+$("#form1").form("submit",{url:"/smartcampus/schoolInfo/updateSchoolInfo",success:function(msg){
+		if(msg.code=="200"){
+			$.alert({msg:"保存成功"});
+		}
+		else{
+			parent.$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+
+
+
+
+});
+
+</script>
+</head>
+<body id="xuexiaoxinxi" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="padding-bottom:5px;padding-top:20px;min-height:18px;"  ><img src="images/15.png" style="width:10px;height:10px;margin-left:25px;margin-top:5px;"id="c23_0" name="c23_0"/>
+<span style="font-size:14px;font-weight:700;padding-left:5px;"id="c23_1" name="c23_1">学校信息</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW ABSROW-2" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:99%;width:-webkit-fill-available;min-height:400px;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><span style="left:25px;position:absolute;top:15px;"id="c23_2_2_0" name="c23_2_2_0">学校名称</span>
+<input edit type="text" style="width:180px;height:30px;left:25px;position:absolute;top:40px;"id="schoolname" name="schoolname"/>
+<span style="left:250px;position:absolute;top:15px;"id="c23_2_2_2" name="c23_2_2_2">学校地址</span>
+<input edit type="text" style="width:180px;height:30px;left:250px;position:absolute;top:40px;"id="address" name="address"/>
+<span style="left:480px;position:absolute;top:15px;"id="c23_2_2_4" name="c23_2_2_4">联系人</span>
+<input edit type="text" style="width:180px;height:30px;left:480px;position:absolute;top:40px;"id="contact" name="contact"/>
+<span style="left:25px;position:absolute;top:80px;"id="c23_2_2_6" name="c23_2_2_6">联系电话</span>
+<input edit type="text" style="width:180px;height:30px;left:25px;position:absolute;top:105px;"id="tel" name="tel"/>
+<span style="left:250px;position:absolute;top:80px;"id="c23_2_2_8" name="c23_2_2_8">学校类型</span>
+<select style="width:180px;left:250px;position:absolute;top:105px;"id="schooltype" name="schooltype">
+</select>
+<span style="left:480px;position:absolute;top:80px;"id="c23_2_2_10" name="c23_2_2_10">登录背景</span>
+<input edit type="file" style="width:180px;height:30px;left:480px;position:absolute;top:105px;"id="bgimg" name="bgimg"/>
+<img src="" style="width:87px;height:85px;left:480px;position:absolute;top:145px;"id="bgimg" name="bgimg"/>
+<span style="left:25px;position:absolute;top:145px;"id="c23_2_2_13" name="c23_2_2_13">学校LOGO</span>
+<input edit type="file" style="width:180px;height:30px;left:25px;position:absolute;top:170px;"id="logo" name="logo"/>
+<img src="" style="width:77px;height:80px;left:25px;position:absolute;top:210px;"id="logo" name="logo"/>
+<button type="button" style="color:#F5F5DC;width:120px;height:30px;left:25px;position:absolute;top:305px;background-color:#80B764;"id="c23_2_2_16" name="c23_2_2_16">保存</button>
+<input edit type="hidden" style="left:150px;position:absolute;top:305px;"id="c23_2_2_17" name="id"/>
+<input edit type="hidden" style="left:176px;position:absolute;top:305px;"id="c23_2_2_18" name="bgimg"/>
+<input edit type="hidden" style="left:232px;position:absolute;top:305px;"id="c23_2_2_19" name="logo"/>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

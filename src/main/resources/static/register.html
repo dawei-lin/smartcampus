@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=353" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=353"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=353"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+
+
+
+
+
+$("[id=c8_1_1_4]").combobox({url:"/smartcampus/schoolInfo/schoolInfoList",textField:'schoolname',multiple:false,valueField:'id'});
+
+
+
+$(document.body).on("click", "[id=c8_1_1_8]", function(){
+$("#c8_1_1_8").attr("src","/smartcampus/userInfo/verifyCode?tstamp100="+new Date().getTime()+"");
+});
+
+$(document.body).on("click", "[id=c8_1_1_9]", function(){
+$("#form1").form("submit",{url:"/smartcampus/userInfo/register",success:function(msg){
+		if(msg.code=="200"){
+			window.location.href="login.html";
+		}
+		else{
+			$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+
+$(document.body).on("click", "[id=c8_1_1_11]", function(){
+window.location.href="login.html";
+});
+
+
+});
+
+</script>
+</head>
+<body id="register" style="background-image:url(images/bgpic.jpg);background-size: 100% 100%;">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="WRAPPERH"><div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 " style="width:400px;min-height:488px;margin-top:80px;background-color:#80B764;"id="c8_0" name="c8_0">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style="padding-left:20px;margin-bottom:0px;margin-top:170px;"  ><span style="color:#F5FFFA;font-family:微软雅黑;font-size:24px;font-weight:400;font-style:normal;"id="c8_0_0_0" name="c8_0_0_0">智慧基础平台</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-left:20px;margin-top:0px;"  ><span style="width:40px;border-bottom:3px solid #F5FFFA;"id="c8_0_0_1" name="c8_0_0_1"></span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-left:20px;min-height:6px;margin-top:10px;"  ><span style="color:#F5FFFA;font-family:微软雅黑;font-size:14px;"id="c8_0_0_2" name="c8_0_0_2">提供导航入口、消息查看、数据查看等<BR/>便捷的管理服务</span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 " style="width:400px;min-height:520px;margin-top:80px;background-color:#FFFFFF;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><div class="WRAPPERH"><span style="font-family:微软雅黑;font-size:20px;padding-left:30px;margin-bottom:60px;margin-top:60px;"id="c8_1_1_0" name="c8_1_1_0">用户注册</span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;border:0px solid #C9C9CB;"id="c8_1_1_1" name="username" placeholder="账号"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="password" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;border:0px solid #C9C9CB;"id="c8_1_1_2" name="password" placeholder="密码"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="password" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;border:0px solid #C9C9CB;"id="c8_1_1_3" name="c8_1_1_3" placeholder="确认密码"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-5_1" style="padding-left:30px;margin-bottom:20px;"  ><select style="width:338px;"id="c8_1_1_4" name="schoolid">
+</select>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-6_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;border:0px solid #C9C9CB;"id="c8_1_1_5" name="realname" placeholder="姓名"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-7_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;border:0px solid #C9C9CB;"id="c8_1_1_6" name="tel" placeholder="手机号"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-8_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:235px;border:0px solid #C9C9CB;"id="verifycode" name="verifycode" placeholder="验证码"/>
+<img src="/smartcampus/userInfo/verifyCode" style="width:96px;height:30px;"id="c8_1_1_8" name="c8_1_1_8"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-9_1" style="padding-left:30px;margin-bottom:20px;"  ><button type="button" style="color:#FFFFFF;width:130px;height:40px;margin-top:1px;background-color:#80B764;"id="c8_1_1_9" name="c8_1_1_9">注册</button>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-10_1" style="padding-left:30px;margin-bottom:20px;"  ><span style="line-height:19px;border-radius: 0px 0px 0px 0px;color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;vertical-align:top;text-align:left;border:0px solid #0080FF;"id="c8_1_1_10" name="c8_1_1_10">已有账号？</span>
+<span style="line-height:19px;border-radius: 0px 0px 0px 0px;color:#80B764;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;vertical-align:top;text-align:left;background-color:#EBEBEB;border:0px solid #0080FF;"id="c8_1_1_11" name="c8_1_1_11">去登录</span>
+<div class="ClearAll"></div>
+</div></div>
+</div><div class="ClearAll"></div>
+</div>
+</body>
+</html>

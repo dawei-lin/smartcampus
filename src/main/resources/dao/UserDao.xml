@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yihongda.smartcampus.dao.UserDao">
+    <select id="getUserListByParam" resultType="com.yihongda.smartcampus.entity.User">
+        SELECT
+        u.id id,u.username username,u.realname realname,u.tel tel,u.code code,r.rolename rolename,u.status status
+        FROM
+        userinfo u left join roleinfo r
+        on u.roleid=r.id
+        where 1=1 and (u.schoolid=#{schoolid}
+        or u.schoolid is null) and (r.schoolid=#{schoolid}
+        or r.schoolid is null)
+        <if test="username!=null and username.length!=0">
+            AND u.username like concat('%',#{username},'%')
+        </if>
+        <if test="status!=null">
+            AND u.status = #{status}
+        </if>
+        <if test="realname!=null and realname.length!=0">
+            AND u.realname like concat('%',#{realname},'%')
+        </if>
+        <if test="code!=null and code.length!=0">
+            AND u.code like concat('%',#{code},'%')
+        </if>
+        <if test="tel!=null and tel.length!=0">
+            AND u.tel like concat('%',#{tel},'%')
+        </if>
+        <if test="roleid!=null and roleid.length!=0">
+            AND u.roleid = #{roleid}
+        </if>
+    </select>
+    <select id="getUnauditedUserListByParam" resultType="com.yihongda.smartcampus.entity.User">
+        SELECT
+        u.id id,u.username username,u.realname realname,u.tel tel,u.code code,r.rolename rolename,u.status status
+        FROM
+        userinfo u left join roleinfo r
+        on u.roleid=r.id
+        where u.status =-1 and (u.schoolid=#{schoolid}
+        or u.schoolid is null) and (r.schoolid=#{schoolid}
+        or r.schoolid is null)
+        <if test="username!=null and username.length!=0">
+            AND u.username like concat('%',#{username},'%')
+        </if>
+        <if test="realname!=null and realname.length!=0">
+            AND u.realname like concat('%',#{realname},'%')
+        </if>
+        <if test="code!=null and code.length!=0">
+            AND u.code like concat('%',#{code},'%')
+        </if>
+        <if test="tel!=null and tel.length!=0">
+            AND u.tel like concat('%',#{tel},'%')
+        </if>
+        <if test="roleid!=null and roleid.length!=0">
+            AND u.roleid = #{roleid}
+        </if>
+    </select>
+    <insert id="saveUserList" parameterType="com.yihongda.smartcampus.entity.User">
+        insert into userinfo(id,username,password,realname,code,tel,status,schoolid,
+        roleid,createtime,createip,createuser,auditor,audittime,lastlogintime,
+        lastloginip,recentlogintime,recentloginip)
+        values
+        <foreach collection="list" item="user" separator=",">
+            (uuid(),#{user.username},#{user.password},#{user.realname},#{user.code},#{user.tel},#{user.status},#{user.schoolid},#{user.roleid},
+            #{user.createtime},#{user.createip},#{user.createuser},#{user.auditor},#{user.audittime},#{user.lastlogintime},#{user.lastloginip},
+            #{user.recentlogintime},#{user.recentloginip})
+        </foreach>
+    </insert>
+    <update id="updatePersonalInfo" parameterType="com.yihongda.smartcampus.entity.User">
+        update userinfo
+        <set>
+            <if test="username!=null and username.length!=0">
+                username=#{username},
+            </if>
+            <if test="password!=null and password.length!=0">
+                password=#{password},
+            </if>
+            <if test="realname!=null and realname.length!=0">
+                realname=#{realname},
+            </if>
+            <if test="tel!=null and tel.length!=0">
+                tel=#{tel},
+            </if>
+            <if test="schoolid!=null and schoolid.length!=0">
+                schoolid=#{schoolid},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+    <select id="getUserCount" resultType="Integer">
+        SELECT
+        count(1)
+        FROM
+        userinfo u left join roleinfo r
+        on u.roleid=r.id
+        where u.status>=0 and (u.schoolid=#{schoolid}
+        or u.schoolid is null) and (r.schoolid=#{schoolid}
+        or r.schoolid is null)
+        <if test="username!=null and username.length!=0">
+            AND u.username like concat('%',#{username},'%')
+        </if>
+        <if test="status!=null">
+            AND u.status = #{status}
+        </if>
+        <if test="realname!=null and realname.length!=0">
+            AND u.realname like concat('%',#{realname},'%')
+        </if>
+        <if test="code!=null and code.length!=0">
+            AND u.code like concat('%',#{code},'%')
+        </if>
+        <if test="tel!=null and tel.length!=0">
+            AND u.tel like concat('%',#{tel},'%')
+        </if>
+        <if test="roleid!=null and roleid.length!=0">
+            AND u.roleid = #{roleid}
+        </if>
+    </select>
+</mapper>

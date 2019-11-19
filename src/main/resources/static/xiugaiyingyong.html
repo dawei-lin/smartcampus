@@ -1,0 +1,115 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.css?v=356" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=356"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.combobox/jquery.yhd.combobox.js?v=356"></script>
+
+<script type="text/javascript">
+var flagType;
+var id=Request("id");
+
+$(document).ready(function(){
+$("[id=form1]").form("load",{url:"/smartcampus/appInfo/getAppInfo/"+id+""});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document.body).on("click", "[id=c19_0_0_21]", function(){
+$('#applogo').click();
+});
+
+
+
+$("[id=c19_0_0_24]").combobox({url:"/smartcampus/appType/appTypeList",textField:'tname',multiple:false,valueField:'id'});
+$(document.body).on("click", "[id=c19_0_0_25]", function(){
+$("#form1").form("submit",{url:"/smartcampus/appInfo/updateAppInfo",success:function(msg){
+		if(msg.code=="200"){
+			parent.$.alert({msg:"保存成功"});parent.$.dialog.close();parent.$("#grid1").datagrid("reload",{/***other***/});
+		}
+		else{
+			parent.$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+$(document.body).on("click", "[id=c19_0_0_26]", function(){
+parent.$.dialog.close();
+});
+
+
+});
+
+</script>
+</head>
+<body id="xiugaiyingyong" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="width:600px;min-height:500px;"  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_1 P_PANEL_1 " style="width:600px;min-height:500px;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><img src="images/15.png" style="width:10px;height:10px;left:24px;position:absolute;top:31px;"id="c19_0_0_1" name="c19_0_0_1"/>
+<span style="font-weight:700;left:40px;position:absolute;top:28px;"id="c19_0_0_2" name="c19_0_0_2">修改应用</span>
+<input edit type="hidden" style="left:109px;position:absolute;top:28px;"id="c19_0_0_3" name="id"/>
+<span style="left:25px;position:absolute;top:60px;"id="c19_0_0_4" name="c19_0_0_4">应用名</span>
+<input edit type="hidden" style="left:133px;position:absolute;top:28px;"id="c19_0_0_5" name="applogo"/>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:85px;"id="c19_0_0_6" name="appname"/>
+<span style="left:297px;position:absolute;top:60px;"id="c19_0_0_7" name="c19_0_0_7">应用ID</span>
+<input edit type="text" style="width:245px;height:30px;left:297px;position:absolute;top:85px;"id="c19_0_0_8" name="connectid"/>
+<span style="left:25px;position:absolute;top:125px;"id="c19_0_0_9" name="c19_0_0_9">key</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:150px;"id="c19_0_0_10" name="connectkey"/>
+<span style="left:297px;position:absolute;top:125px;"id="c19_0_0_11" name="c19_0_0_11">联系电话</span>
+<input edit type="text" style="width:245px;height:30px;left:297px;position:absolute;top:150px;"id="c19_0_0_12" name="tel"/>
+<span style="left:25px;position:absolute;top:190px;"id="c19_0_0_13" name="c19_0_0_13">厂商名称</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:215px;"id="c19_0_0_14" name="company"/>
+<span style="left:297px;position:absolute;top:190px;"id="c19_0_0_15" name="c19_0_0_15">消息中心选项</span>
+<select style="width:242px;left:297px;position:absolute;top:215px;"id="c19_0_0_16" name="bmess">
+<option value ="1">是</option>
+<option value ="0">否</option>
+</select>
+<span style="left:25px;position:absolute;top:255px;"id="c19_0_0_17" name="c19_0_0_17">应用地址</span>
+<input edit type="text" style="width:245px;height:30px;left:25px;position:absolute;top:280px;"id="c19_0_0_18" name="appurl"/>
+<span style="left:297px;position:absolute;top:255px;"id="c19_0_0_19" name="c19_0_0_19">应用LOGO</span>
+<input edit type="file" style="width:0px;height:0px;left:399px;position:absolute;top:280px;"id="applogo" name="applogo"/>
+<button type="button" style="color:#FFFFFF;width:90px;height:30px;left:451px;position:absolute;top:280px;background-color:#80B764;"id="c19_0_0_21" name="c19_0_0_21">选择图片</button>
+<img src="" style="width:92px;height:92px;left:297px;position:absolute;top:280px;"id="c19_0_0_22" name="c19_0_0_22"/>
+<span style="left:25px;position:absolute;top:320px;"id="c19_0_0_23" name="c19_0_0_23">应用类别</span>
+<select style="width:242px;left:25px;position:absolute;top:345px;"id="c19_0_0_24" name="apptype">
+</select>
+<button type="button" style="color:#FFFFFF;width:90px;height:30px;left:25px;position:absolute;top:390px;background-color:#80B764;"id="c19_0_0_25" name="c19_0_0_25">确定</button>
+<button type="button" style="width:90px;height:30px;left:140px;position:absolute;top:390px;"id="c19_0_0_26" name="c19_0_0_26">取消</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

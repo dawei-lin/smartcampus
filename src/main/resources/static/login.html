@@ -1,0 +1,103 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=353"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+
+
+
+
+
+
+
+$(document.body).on("click", "[id=c0_1_1_4]", function(){
+$("#c0_1_1_4").attr("src","/smartcampus/userInfo/verifyCode?tstamp100="+new Date().getTime()+"");
+});
+
+$(document.body).on("click", "[id=c5_1_1_5]", function(){
+$("#form1").form("submit",{
+	url:"/smartcampus/userInfo/login",
+	success:function(msg){
+		if(msg.code=="200"){
+			$.session.sets(eval("("+msg.msg+")"));
+			window.location.href="indexfrm.html";
+		}
+		else{
+			$("#form1").form("reset");$.alert({msg:msg.msg});
+		}
+	}
+});
+});
+
+
+
+$(document.body).on("click", "[id=c5_1_1_8]", function(){
+window.location.href="register.html";
+});
+
+
+});
+
+</script>
+</head>
+<body id="login" style="background-image:url(images/bgpic.jpg);background-size: 100% 100%;">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style=""  ><div class="WRAPPERH"><div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 " style="width:400px;min-height:488px;margin-top:100px;background-color:#80B764;"id="c5_0" name="c5_0">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style="padding-left:20px;margin-bottom:0px;margin-top:170px;"  ><span style="color:#F5FFFA;font-family:微软雅黑;font-size:24px;font-weight:400;font-style:normal;"id="c5_0_0_0" name="c5_0_0_0">智慧基础平台</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-left:20px;margin-top:0px;"  ><span style="width:40px;border-bottom:3px solid #F5FFFA;"id="c5_0_0_1" name="c5_0_0_1"></span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-left:20px;min-height:6px;margin-top:10px;"  ><span style="color:#F5FFFA;font-family:微软雅黑;font-size:14px;"id="c5_0_0_2" name="c5_0_0_2">提供导航入口、消息查看、数据查看等<BR/>便捷的管理服务</span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 " style="width:400px;min-height:488px;margin-top:100px;background-color:#FFFFFF;"id="form1" name="form1">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><div class="WRAPPERH"><span style="color:#474A53;font-family:微软雅黑;font-size:20px;margin-bottom:60px;margin-top:60px;"id="c5_1_1_0" name="c5_1_1_0">用户登录</span>
+</div><div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;height:30px;border-bottom:1px solid #C9C9CB;"id="c5_1_1_1" name="username" placeholder="账号"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="password" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:338px;height:30px;border-bottom:1px solid #C9C9CB;"id="c5_1_1_2" name="password" placeholder="密码"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1" style="padding-left:30px;margin-bottom:20px;"  ><input edit type="text" style="color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;width:235px;height:30px;border-bottom:1px solid #C9C9CB;"id="verifycode" name="verifycode" placeholder="验证码"/>
+<img src="/smartcampus/userInfo/verifyCode" style="width:96px;height:30px;"id="c0_1_1_4" name="c0_1_1_4"/>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-5_1" style="margin-bottom:20px;"  ><button type="button" style="line-height:40px;border-radius: 5px 5px 5px 5px;color:#F5FFFA;font-family:微软雅黑;font-size:14px;padding-right:3px;padding-bottom:3px;padding-left:3px;padding-top:3px;width:130px;height:40px;margin-left:30px;vertical-align:middle;text-align:center;background-color:#80B764;border:0px none #EBEBEB;"id="c5_1_1_5" name="c5_1_1_5">登录</button>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-6_1" style="padding-left:30px;margin-bottom:20px;"  ><span style="line-height:19px;border-radius: 0px 0px 0px 0px;color:#80B764;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;vertical-align:top;text-align:left;border:0px solid #0080FF;"id="c5_1_1_6" name="c5_1_1_6">忘记密码？</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-7_1" style="padding-left:30px;"  ><span style="line-height:19px;border-radius: 0px 0px 0px 0px;color:#919BAA;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;vertical-align:top;text-align:left;border:0px solid #0080FF;"id="c5_1_1_7" name="c5_1_1_7">还没有账号？</span>
+<span style="line-height:19px;border-radius: 0px 0px 0px 0px;color:#80B764;font-family:微软雅黑;font-size:14px;padding-right:0px;padding-bottom:0px;padding-left:0px;padding-top:0px;vertical-align:top;text-align:left;border:0px solid #0080FF;"id="c5_1_1_8" name="c5_1_1_8">注册</span>
+<div class="ClearAll"></div>
+</div></div>
+</div><div class="ClearAll"></div>
+</div>
+</body>
+</html>

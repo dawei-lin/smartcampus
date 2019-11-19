@@ -1,0 +1,129 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/common.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/css/yhdcss.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.css" />
+<link type="text/css" rel="stylesheet" href="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.css" />
+
+<style type="text/css">
+
+</style>
+<script type="text/javascript" src="/smartcampus/script/jquery.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.system.min.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.message/jquery.yhd.message.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.dialog/jquery.yhd.dialog.js"></script>
+<script type="text/javascript" src="/smartcampus/script/jquery.yhd.form/jquery.yhd.form.js?v=359"></script>
+
+<script type="text/javascript">
+var flagType;
+
+$(document).ready(function(){
+$("[id=sessionusername]").html($.session.get("username"));
+$("[id=sessiontel]").html($.session.get("tel"));
+$("[id=sessionschoolname]").html($.session.get("schoolname"));
+$("[id=sessionrealname]").html($.session.get("realname"));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document.body).on("click", "[id=c27_0_0_6]", function(){
+$.dialog.show({url:"xiugaiyonghu.html?id="+$.session.get('id')+"",title:"修改用户",height:300,width:600});
+});
+
+
+
+
+$(document.body).on("click", "[id=c27_0_0_8]", function(){
+$.dialog.show({url:"xiugaimima.html?id="+$.session.get('id')+"",title:"修改用户",height:300,width:600});
+});
+
+
+});
+
+</script>
+</head>
+<body id="yonghuxinxi" style="">
+
+<div class="ClearAll  RELATIVE ANYROW ABSROW-1" style="padding-right:25px;padding-left:25px;padding-top:25px;min-height:700px;"  ><div class="ANYFORMVIEW P_ANYFORMVIEW P_ANYFORMVIEW_1 P_FORMVIEW_1 " style="width:99%;width:-webkit-fill-available;"id="c27_0" name="c27_0">
+
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-1_1" style=""  ><img src="images/15.png" style="width:10px;height:10px;margin-top:4px;"id="c27_0_0_0" name="c27_0_0_0"/>
+<span style="font-weight:700;padding-left:5px;"id="c27_0_0_1" name="c27_0_0_1">个人信息</span>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-2_1" style="min-height:17px;border-bottom:1px solid #E6E6EF;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-3_1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_2 P_PANEL_2 " style="width:200px;"id="c27_0_0_2" name="c27_0_0_2">
+
+<div class="ClearAll  RELATIVE ANYROW_2 ABSROW-1_2" style=""  ><img src="images/14.png" style="width:16px;height:15px;left:6px;position:absolute;top:10px;"id="c27_0_0_2_0" name="c27_0_0_2_0"/>
+<span style="left:75px;position:absolute;top:6px;"id="c27_0_0_2_1" name="c27_0_0_2_1"><label id="sessionusername"></label></span>
+<span style="left:40px;position:absolute;top:28px;"id="c27_0_0_2_2" name="c27_0_0_2_2">用于登录平台的身份ID</span>
+<span style="left:40px;position:absolute;top:6px;"id="c27_0_0_2_3" name="c27_0_0_2_3">账号</span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-4_1" style="min-height:17px;border-bottom:1px solid #E6E6EF;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-5_1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_2 P_PANEL_2 "id="c27_0_0_3" name="c27_0_0_3">
+
+<div class="ClearAll  RELATIVE ANYROW_2 ABSROW-1_2" style=""  ><img src="images/12.png" style="width:16px;height:16px;left:6px;position:absolute;top:10px;"id="c27_0_0_3_0" name="c27_0_0_3_0"/>
+<span style="left:42px;position:absolute;top:28px;"id="c27_0_0_3_1" name="c27_0_0_3_1">安全认证</span>
+<span style="left:43px;position:absolute;top:6px;"id="c27_0_0_3_2" name="c27_0_0_3_2"><label id="sessiontel"></label></span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-6_1" style="min-height:17px;border-bottom:1px solid #E6E6EF;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-7_1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_2 P_PANEL_2 "id="c27_0_0_4" name="c27_0_0_4">
+
+<div class="ClearAll  RELATIVE ANYROW_2 ABSROW-1_2" style=""  ><img src="images/13.png" style="width:16px;height:16px;left:6px;position:absolute;top:10px;"id="c27_0_0_4_0" name="c27_0_0_4_0"/>
+<span style="left:42px;position:absolute;top:28px;"id="c27_0_0_4_1" name="c27_0_0_4_1"><label id="sessionschoolname"></label></span>
+<span style="left:43px;position:absolute;top:6px;"id="c27_0_0_4_2" name="c27_0_0_4_2">学校名</span>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-8_1" style="min-height:17px;border-bottom:1px solid #E6E6EF;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-9_1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_2 P_PANEL_2 "id="c27_0_0_5" name="c27_0_0_5">
+
+<div class="ClearAll  RELATIVE ANYROW_2 ABSROW-1_2" style=""  ><img src="images/14.png" style="width:16px;height:16px;left:6px;position:absolute;top:10px;"id="c27_0_0_5_0" name="c27_0_0_5_0"/>
+<span style="left:42px;position:absolute;top:28px;"id="c27_0_0_5_1" name="c27_0_0_5_1"><label id="sessionrealname"></label></span>
+<span style="left:43px;position:absolute;top:6px;"id="c27_0_0_5_2" name="c27_0_0_5_2">姓名</span>
+<div class="ClearAll"></div>
+</div></div>
+<button type="button" style="color:#F5F5DC;float:right;width:120px;margin-right:15px;height:30px;margin-left:0px;margin-top:15px;background-color:#80B764;"id="c27_0_0_6" name="c27_0_0_6">修改个人信息</button>
+<div class="ClearAll"></div>
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-10_1" style="min-height:17px;border-bottom:1px solid #E6E6EF;"  >
+</div>
+<div class="ClearAll  RELATIVE ANYROW_1 ABSROW-11_1" style=""  ><div class="ANYPANEL P_ANYPANEL P_ANYPANEL_2 P_PANEL_2 "id="c27_0_0_7" name="c27_0_0_7">
+
+<div class="ClearAll  RELATIVE ANYROW_2 ABSROW-1_2" style=""  ><img src="images/11.png" style="width:16px;height:16px;left:6px;position:absolute;top:10px;"id="c27_0_0_7_0" name="c27_0_0_7_0"/>
+<span style="left:42px;position:absolute;top:28px;"id="c27_0_0_7_1" name="c27_0_0_7_1">保护登录安全</span>
+<span style="left:43px;position:absolute;top:6px;"id="c27_0_0_7_2" name="c27_0_0_7_2">密码</span>
+<div class="ClearAll"></div>
+</div></div>
+<button type="button" style="float:right;width:120px;margin-right:15px;height:30px;margin-left:0px;margin-top:15px;background-color:#EEEEF9;"id="c27_0_0_8" name="c27_0_0_8">修改密码</button>
+<div class="ClearAll"></div>
+</div></div>
+<div class="ClearAll"></div>
+</div>
+</body>
+</html>

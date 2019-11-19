@@ -1,0 +1,8 @@
+﻿@charset "UTF-8";
+.row-selected{
+	background-color : #2297dd;
+}
+
+.row-over{
+	background-color : #ffff00;
+}

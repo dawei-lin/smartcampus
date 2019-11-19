@@ -1,0 +1,25 @@
+server:
+  port: 8011
+  servlet:
+    context-path: /smartcampus
+spring:
+  profiles:
+    active: dev  #默认为开发环境
+  application:
+    name: smartcampus-service
+  servlet:
+    multipart:
+      maxRequestSize: 30MB
+      maxFileSize: 30MB
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  config: classpath:log4j2.xml
+#pagehelper分页插件配置
+pagehelper:
+  helperDialect: mysql
+secret: yihongda

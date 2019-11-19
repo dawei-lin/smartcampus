@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yihongda.smartcampus.dao.RoleInfoDao">
+    <select id="getRoleListByParam" resultType="com.yihongda.smartcampus.entity.RoleInfo">
+        SELECT
+        id,rolename,roledes,schoolid,status
+        FROM
+        roleinfo
+        where 1=1 and (schoolid=#{schoolid} or schoolid is null)
+        <if test="rolename!=null and rolename.length!=0">
+            AND rolename like concat('%',#{rolename},'%')
+        </if>
+        <if test="status!=null">
+            AND status = #{status}
+        </if>
+    </select>
+    <select id="getRoleCount" resultType="Integer">
+        SELECT
+        count(1)
+        FROM
+        roleinfo
+        where 1=1 and (schoolid=#{schoolid} or schoolid is null)
+        <if test="rolename!=null and rolename.length!=0">
+            AND rolename like concat('%',#{rolename},'%')
+        </if>
+        <if test="status!=null">
+            AND status = #{status}
+        </if>
+    </select>
+</mapper>
