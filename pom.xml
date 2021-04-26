@@ -224,7 +224,7 @@
         <jwt.version>0.9.0</jwt.version>
         <mybatis.version>1.3.2</mybatis.version>
         <project.smartcampus.artifact.version>1.0.1-SNAPSHOT</project.smartcampus.artifact.version>
-        <commons-io.version>2.4</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <lombok.version>1.16.20</lombok.version>
     </properties>
 
